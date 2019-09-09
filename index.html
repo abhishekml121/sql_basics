@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> SQL Basics Overview </title>
+    <!-- Links ---------------->
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<!-- body ---------------->
+
+<body>
+    <header class="page_header">
+        <img src="./images/balloons.svg" alt="" class="move">
+        <h1>SQL BASICS OVERVIEW</h1>
+    </header>
+    <main class="main">
+        <div class="wrap">
+            <div class="left_side">
+                <dl>
+                    <div class="common">
+                        <dt id="l1">
+                            create a database
+                        </dt>
+                        <dd>
+                            <code class="code">
+                                CREATE DATABASE database_1;
+                            </code>
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                It will create a database named database_1
+                            </span>
+                        </dd>
+                    </div>
+
+                    <div class="common">
+                        <dt id="l2">
+                            show all databases
+                        </dt>
+                        <dd>
+                            <code class="code">
+                                SHOW DATABASES;
+                            </code>
+                            <span class="output">
+
+                                <pre>+--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| database_1         |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+</pre>
+                            </span>
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                It will show you all databases, you can see your database named as database_1
+                                in the databases list which is created just before by you
+                            </span>
+                        </dd>
+                    </div>
+
+                    <div class="common">
+                        <dt id="l3">
+                            use a database
+                        </dt>
+                        <dd>
+                            <code class="code">
+                                USE DATABASE database_1;
+                            </code>
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                it will use database named as database_1. now you are inside of database_1
+                            </span>
+                        </dd>
+                    </div>
+
+                    <div class="common">
+                        <dt id="l4">
+                            delete a database
+                        </dt>
+                        <dd>
+                            <code class="code">
+                                DROP DATABASE database_1;
+                            </code>
+                            <span class="tips">TIPS -></span>
+                            <span class="about">
+                                It will delete a database named database_1
+                            </span>
+                        </dd>
+                    </div>
+
+                    <div class="common">
+                        <dt id="l5">
+                            DATA TYPES
+                        </dt>
+                        <h2 class="sub">
+                            For numeric fields
+                        </h2>
+                        <dd>
+                            <ul>
+                                <li>BIGINT (very big values)</li>
+                                <li>INT (big values)</li>
+                                <li>SMALLINT (-32,768 to 32,767)</li>
+                                <li>TINYINT (0 to 255)</li>
+                                <li>DECIMAL(m,d)</li>
+                                <li>NUMERIC (same as decimal)</li>
+                                <li>FLOAT(m,d)
+                                </li>
+
+                            </ul>
+                            <div class="note">
+                                <span>NOTE : </span>For float data type, display lenght (m) and number of decimals (d) are optional.
+                            </div>
+                        </dd>
+
+                        <h2 class="sub">Date and time data types</h2>
+                        <dd>
+                            <ul>
+                                <li>DATETIME (YYYY-MM-DD HH:MM:SS)</li>
+                                <li>DATE (YYYY-MM-DD)</li>
+                                <li>TIME (HH:MM:SS)</li>
+                                <li>YEAR (YYYY)</li>
+                            </ul>
+                        </dd>
+
+                        <h2 class="sub">Character data types</h2>
+                        <dd>
+                            <ul>
+                                <li>CHAR(m)</li>
+                                <li>VARCHAR(m)
+                                    <br>
+                                    <div class="note"><span>NOTE : </span>VARCHAR(m) is best than CHAR(m) in terms of memory wastage.</div>
+                                </li>
+                                <li>TEXT (to store large amount of text)</li>
+                            </ul>
+                        </dd>
+
+                        <dt id="l6">For storing image</dt>
+                        <dd>
+                            <ul>
+                                <li>
+                                    BLOB (binary large object)
+                                </li>
+                            </ul>
+                        </dd>
+                    </div>
+
+                    <div class="common">
+                        <dt id="l7">
+                            Types of contraints
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>NOT NULL</li>
+                                <li>DEFAULT</li>
+                                <li>UNIQUE</li>
+                                <li>PRIMARY KEY</li>
+                                <li>FOREIGN KEY</li>
+                                <li>CHECK CONSTRAINT</li>
+                            </ul>
+                        </dd>
+                    </div>
+
+                    <div class="common">
+                        <dt id="l8">
+                            create table
+                        </dt>
+                        <dd>
+                            <code class="code">
+                                CREATE TABLE supplier(
+                                SID int NOT NULL,
+                                NAME varchar(20) NOT NULL,
+                                ADDRESS varchar(80));
+                            </code>
+                            <span class="tips">TIPS -></span>
+                            <span class="about">
+                                It will create a table named as supplier which has 3 attributes -
+                            </span>
+                            <ul>
+                                <li>SID</li>
+                                <li>NAME</li>
+                                <li>ADDRESS</li>
+                            </ul>
+
+                        </dd>
+                        <dd>now type given below query - <code class="code">DESCRIBE supplier;</code> you will see something like this.
+                            <pre>+---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| SID     | int(11)     | NO   |     | NULL    |       |
+| NAME    | varchar(20) | NO   |     | NULL    |       |
+| ADDRESS | varchar(80) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+</pre>
+                        </dd>
+                    </div>
+
+                    <div class="common">
+                        <dt id="l9">
+                            To insert values inside of table
+                        </dt>
+                        <dd>
+                            There are two methods to insert values inside of table -
+                            <ul>
+                                <li>
+                                    <h3>Method 1</h3>
+                                    <code class="code">
+                                        INSERT INTO supplier value(
+                                        1,
+                                        "abhinav",
+                                        "address_of_abhinav");
+                                    </code>
+                                </li>
+                                <li>
+                                    <h3>Method 2</h3>
+                                    <code class="code">
+                                        INSERT INTO supplier(SID, NAME, ADDRESS)
+                                        value(1,"abhinav","address_of_abhinav");
+                                    </code>
+                                </li>
+                            </ul>
+                        </dd>
+                    </div>
+
+                    <div class="common">
+                        <dt id="l10">
+                            To show table details
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>
+                                    <h3>show full table detail</h3>
+                                    <code class="code">
+                                        SELECT * FROM supplier;
+                                    </code>
+
+                                    <p>you will get something like this -</p>
+                                    <pre>
++-----+---------+---------------------+
+| SID | NAME    | ADDRESS             |
++-----+---------+---------------------+
+|   1 | abhinav | address_of_abhinav  |
++-----+---------+---------------------+</pre>
+
+                                    <p>
+                                        Similary you can insert more values inside of table.
+                                    </p>
+                                </li>
+                                <li>
+                                    <h3 class="l13">Show details of some attribute inside of a table</h3>
+                                    <code class="code">
+                                        SELECT SID, NAME FROM supplier;
+                                    </code>
+                                    <p>You will get something like this -</p>
+                                    <pre>+-----+---------+
+| SID | NAME    |
++-----+---------+
+|   1 | abhinav |
++-----+---------+</pre>
+                                </li>
+
+                            </ul>
+
+                        </dd>
+                    </div>
+
+                    <div class="common">
+                        <dt id="l11">
+                            Creating table from other table
+                        </dt>
+                        <dd>
+                            <code class="code">
+                                CREATE TABLE sup AS
+                                SELECT SID, NAME
+                                FROM supplier;
+                            </code>
+                            <span class="tips">TIPS -></span>
+                            <span class="about">
+                                It will create new table named as sup which has two attributes -
+                                <ul>
+                                    <li>
+                                        SID
+                                    </li>
+                                    <li>
+                                        NAME
+                                    </li>
+                                </ul>
+                                <div class="note">
+                                    <span>NOTE :</span>It'll create both attributes as same as in supplier table.
+                                </div>
+                            </span>
+                            <p>
+                                Now type
+                                <code class="code">
+                                    DESCRIBE sup;
+                                </code>
+                                You will get output something like this -
+                            </p>
+                            <pre>+---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| SID     | int(11)     | NO   |     | NULL    |       |
+| NAME    | varchar(20) | NO   |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+</pre>
+                        </dd>
+                    </div>
+
+                    <div class="common">
+                        <dt id="l12">
+                            Insert table values from other table
+                        </dt>
+                        <dd>
+                            <code class="code">
+                                INSERT INTO sup (SID, NAME)
+                                SELECT SID, NAME FROM supplier;
+                            </code>
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                It will insert table values of supplier inside of table sup.<br>
+                                You can type given below query to show the values inside of table named as sup.<code class="code">SELECT * FROM sup;</code>
+                            </span>
+                        </dd>
+                    </div>
+
+                    <div class="common">
+                        <dt id="l13">
+                            Show all table's name
+                        </dt>
+                        <dd>
+                            <code class="code">
+                                SHOW TABLES;
+                            </code>
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                It will show the name of all tables
+                            </span>
+                        </dd>
+                    </div>
+
+
+                    <div class="common">
+                        <dt id="l14">
+                            Delete table from database
+                        </dt>
+                        <dd>
+                            <code class="code">
+                                DROP TABLE name_of_table;
+                            </code>
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                If you write given below query then it will delete or remove table named as supplier
+                            </span>
+                            <code class="code">
+                                DROP TABLE supplier;
+                            </code>
+                        </dd>
+                    </div>
+
+                    <div class="common">
+                        <dt id="l15">
+                            Arithmetic operations
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>
+                                    <h3>Addition +</h3>
+                                    <code class="code">
+                                        SLELECT 2+5
+                                    </code>
+                                </li>
+                                <li>
+                                    <h3>Multiplcation *</h3>
+                                    <code class="code">
+                                        SLELECT 2*4
+                                    </code>
+                                </li>
+                                <li>
+                                    <h3>Division /</h3>
+                                    <code class="code">
+                                        SLELECT 12/2
+                                    </code>
+                                </li>
+                            </ul>
+                        </dd>
+                    </div>
+                    <div class="common">
+                        <dt id="l16">
+                            Logical operators
+                        </dt>
+                        <dd>
+                            <code class="code">
+                                SELECT * FROM supplier
+                                WHERE SID=3 OR SID=1;
+                            </code>
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                It will show information of the attribute SID whose SID=3 OR SID=1
+                            </span>
+
+                            <div class="sub_border">
+                                <code class="code">
+                                    SELECT * FROM supplier WHERE NAME LIKE 'c%';
+                                </code>
+                                <span class="tips">TIPS &rarr;</span>
+                                <span class="about">
+                                    It will show information of the attribute NAME whose value is starting from c
+                                </span>
+                                <code class="code">
+                                    SELECT * FROM supplier WHERE SID LIKE '1_';
+                                </code>
+
+                                <span class="tips">TIPS &rarr;</span>
+                                <span class="about">
+                                    It will show information of the attribute SID whose value is of length 2 which
+                                    is starting from 1 and at the second character, value should be starting from 0 to 9 which means that it will show the details of those SID's whose value
+                                    would be between 10 (included) and 19 (included) .
+                                </span>
+
+
+                                <code class="code">
+                                    SELECT * FROM supplier
+                                    WHERE SID LIKE '1%';
+                                </code>
+                                <span class="tips">TIPS &rarr;</span>
+                                <span class="about">
+                                    It will show information of the attribute SID whose value is of any lenght which
+                                    is starting from 1 and ending at anything
+                                </span>
+                                <p>
+                                    Now you know the difference between '1_' and '1%'</p>
+                            </div> <!-- .sub_border -->
+
+                            <code class="code">
+                                SELECT * FROM supplier WHERE NAME IS NULL;
+                            </code>
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                It will show information of the attribute NAME whose value is null (empty)
+                            </span>
+                            <code class="code">
+                                SELECT * FROM supplier WHERE NAME IS NOT NULL;
+                            </code>
+
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                It will show information of the attribute NAME whose value is not null
+                            </span>
+
+                            <code class="code">
+                                SELECT * FROM supplier
+                                WHERE SID IN (1,2,5);
+                            </code>
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                It will show information of the attribute SID whose value is 1 , 2 , 5.<br>
+                                If there is no value associating to the given SID then it will not show details of those SID's .
+                            </span>
+
+                            <code class="code">
+                                SELECT * FROM supplier
+                                WHERE SID BETEEN 1 AND 10;
+                            </code>
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                It will show information of the attribute SID whose value is between is 1 and 10
+                            </span>
+                        </dd>
+                    </div>
+
+                    <div class="common">
+                        <dt id="l17">
+                            Update or change value inside of table
+                        </dt>
+                        <dd>
+                            Suppose table named as supplier is look like this -
+                            <pre>+-----+---------+---------------------+
+| SID | NAME    | ADDRESS             |
++-----+---------+---------------------+
+|   1 | abhinav | address_of_abhinav  |
++-----+---------+---------------------+
+|   2 | backus  | address_of_backus   |
++-----+---------+---------------------+</pre>
+                            now if you want to change NAME 'abhinav' to 'zoe' then the code will be -
+                            <code class="code">
+                                UPDATE supplier SET NAME = "zoe" WHERE SID = 1;
+                            </code>
+                            afetr that you will see something like this -
+                            <pre>+-----+---------+---------------------+
+| SID | NAME    | ADDRESS             |
++-----+---------+---------------------+
+|   1 | zoe     | address_of_abhinav  |
++-----+---------+---------------------+
+|   2 | backus  | address_of_backus   |
++-----+---------+---------------------+</pre>
+                        </dd>
+                    </div>
+
+                    <div class="common">
+                        <dt id="l18">
+                            Delete a row from table
+                        </dt>
+                        <dd>
+                            Suppose you want to delete a row from a table named as supplier whose SID = 2 (see just upper diagram).
+                            <code class="code">
+                                DELETE FROM supplier WHERE SID = 2;
+                            </code>
+                        </dd>
+                    </div>
+
+                    <div class="common">
+                        <dt id="l19">
+                            Top and Limit clause
+                        </dt>
+                        <dd>
+                            <code class="code">
+                                SELECT * FROM supplier LIMIT 3;
+                            </code>
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                It will show only top 5 rows in the table supplier.
+                            </span>
+                        </dd>
+                    </div>
+                    <div class="common">
+                        <dt id="l20">
+                            Order by clause
+                        </dt>
+                        <dd>
+                            <code class="code">
+                                SELECT * FROM supplier ORDER BY AGE;
+                            </code>
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                It will show you age in increasing (lowest to highest) fashion, if the table contains age attribute.
+                            </span>
+                            <pre>+-----+---------+---------------------+
+| SID | NAME    | AGE                 |
++-----+---------+---------------------+
+|   1 | abhinav | 12                  |
++-----+---------+---------------------+
+|   2 | peterson| 14                  |
++-----+---------+---------------------+
+|   3 | galvin  | 14                  |
++-----+---------+---------------------+
+|   4 | lexi    | 20                  |
++-----+---------+---------------------+</pre>
+
+                            <code class="code">
+                                SELECT * FROM supplier ORDER BY NAME;
+                            </code>
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                It will show you name in increasing (a/A to z/Z) fashion, if the table contains name attribute.
+                            </span>
+                            <pre>+-----+---------+---------------------+
+| SID | NAME    | AGE                 |
++-----+---------+---------------------+
+|   1 | abhinav | 12                  |
++-----+---------+---------------------+
+|   3 | galvin  | 14                  |
++-----+---------+---------------------+
+|   4 | lexi    | 20                  |
++-----+---------+---------------------+
+|   2 | peterson| 14                  |
++-----+---------+---------------------+</pre>
+
+                            <code class="code">
+                                SELECT * FROM supplier ORDER BY AGE DESC;
+                            </code>
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                It will show you age in idecreasing (highest to lowest) fashion.<br>
+                                Similarily you can do for name attribute.
+                            </span>
+                            <pre>+-----+---------+---------------------+
+| SID | NAME    | AGE                 |
++-----+---------+---------------------+
+|   2 | peterson| 14                  |
++-----+---------+---------------------+
+|   4 | lexi    | 20                  |
++-----+---------+---------------------+
+|   3 | galvin  | 14                  |
++-----+---------+---------------------+
+|   1 | abhinav | 12                  |
++-----+---------+---------------------+</pre>
+                        </dd>
+                    </div>
+
+                    <div class="common">
+                        <dt id="l21">
+                            Group by clause
+                        </dt>
+                        <dd>
+                            <code class="code">
+                                SELECT NAME,
+                                COUNT(*) FROM supplier
+                                GROUP BY NAME;
+                            </code>
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                It will count the frequency of each name in table supplier and display result.<br>
+                                Suppose table supplier looks like this -
+                            </span>
+
+                            <pre>+-----+---------+---------------------+
+| SID | NAME    | AGE                 |
++-----+---------+---------------------+
+|   1 | abhinav | 12                  |
++-----+---------+---------------------+
+|   2 | peterson| 15                  |
++-----+---------+---------------------+
+|   3 | galvin  | 14                  |
++-----+---------+---------------------+
+|   4 | lexi    | 20                  |
++-----+---------+---------------------+
+|   5 | lexi    | 10                  |
++-----+---------+---------------------+
+|   6 | abhinav | 85                  |
++-----+---------+---------------------+</pre>
+                            When you run given below query -
+                            <code class="code">
+                                SELECT NAME,
+                                COUNT(*) FROM supplier
+                                GROUP BY NAME;
+                            </code>
+                            then output will be -
+                            <pre>+---------+---------------------+
+| NAME    | COUNT               |
++---------+---------------------+
+| abhinav | 2                   |
++---------+---------------------+
+| galvin  | 1                   |
++---------+---------------------+
+| lexi    | 2                   |
++---------+---------------------+
+| peterson| 1                   |
++---------+---------------------+</pre>
+
+                        </dd>
+                    </div>
+                    <div class="common">
+                        <dt id="l22">
+                            Table result with changing the attribute name with 'AS' clause
+                        </dt>
+                        <dd>
+                            <code class="code">
+                                SELECT NAME AS 'NAME_OF_SUPPLIER',
+                                ADDRESS AS 'ADDRESS_OF_SUPPLIER'
+                                FROM supplier;
+                            </code>
+                            <span class="tips">TIPS &rarr;</span>
+                            <span class="about">
+                                It will show the table details with attribute NAME and ADDRESS as NAME_OF_SUPPLIER and ADDRESS_OF_SUPPLIER respectively.<br>
+                                Suppose table supplier look like this
+                                <pre>+-----+---------+---------------------+
+| SID | NAME    | ADDRESS             |
++-----+---------+---------------------+
+|   1 | zoe     | address_of_abhinav  |
++-----+---------+---------------------+
+|   2 | backus  | address_of_backus   |
++-----+---------+---------------------+</pre>
+                                OR you can give below query to get table details of supplier -
+                                <code class="code">
+                                    SELECT * FROM supplier;
+                                </code>
+                            </span>
+                            <div class="output">
+                                Output : output of the above command -
+                                <code class="code">
+                                    SELECT NAME AS 'NAME_OF_SUPPLIER',
+                                    ADDRESS AS 'ADDRESS_OF_SUPPLIER'
+                                    FROM supplier;
+                                </code>
+                                <pre>+---------------------+-----------------------+
+| NAME_OF_SUPPLIER    | ADDRESS_OF_SUPPLIER   |
++---------------------+-----------------------+
+| zoe                 | address_of_abhinav    |
++---------------------+-----------------------+
+| backus              | address_of_backus     |
++---------------------+-----------------------+</pre>
+                                But it does not change anything in the original table.
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="common">
+                        <dt id="l23">
+                            Useful functions
+                        </dt>
+                        <dd>
+
+                            <ul>
+                                <li>
+                                    <h3>ABS()</h3>
+                                    <code class="code">
+                                        SELECT ABS(-2);
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It will convert negative number to positive number.<br>
+                                        Output is given below -
+                                    </span>
+                                    <div class="output">
+                                        <pre>+---------+
+| ABS(-2) |
++---------+
+|       2 |
++---------+</pre>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <h3>ROUND()</h3>
+                                    <code class="code">
+                                        SELECT ROUND(54.683);
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It will round the number.<br>
+                                        Output is given below -
+                                    </span>
+                                    <div class="output">
+                                        <pre>+---------------+
+| ROUND(54.683) |
++---------------+
+|            55 |
++---------------+</pre>
+                                    </div>
+
+                                    <code class="code">
+                                        SELECT ROUND(54.683, 0);
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It will round the number to zero digit after the decimal. (same as previous)<br>
+                                        Output is given below -
+                                    </span>
+                                    <div class="output">
+                                        <pre>+---------------+
+| ROUND(54.683) |
++---------------+
+|            55 |
++---------------+</pre>
+                                    </div>
+
+                                    <code class="code">
+                                        SELECT ROUND(54.683, 2);
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It will round the number to zero digit after the decimal. (same as previous)<br>
+                                        Output is given below -
+                                    </span>
+                                    <div class="output">
+                                        <pre>+---------------+
+| ROUND(54.683) |
++---------------+
+|         54.68 |
++---------------+</pre>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3>Div() and Mod()</h3>
+                                    <code class="code">
+                                        SELECT 9 DIV 2;
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It will dislpay the integer number.
+                                        So the output of the above command is basically 4 istead of 4.5000
+                                    </span>
+
+                                    <code class="code">
+                                        SELECT 9 MOD 2;
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It will dislpay remainder.
+                                        So the output of the above command is basically 1
+                                    </span>
+                                </li>
+
+                                <li>
+                                    <h3>CEIL()</h3>
+                                    <code class="code">
+                                        SELECT CEIL(53.001);
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It will dislpay the next higher integer number.<br>
+                                        Output :
+                                    </span>
+                                    <div class="output">
+                                        <pre>+--------------+
+| CEIL(53.001) |
++--------------+
+|           54 |
++--------------+</pre>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <h3>FLOOR()</h3>
+                                    <code class="code">
+                                        SELECT FLOOR(53.001);
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It will dislpay the next lower integer number.<br>
+                                        Output :
+                                    </span>
+                                    <div class="output">
+                                        <pre>+--------------+
+| FLOOR(53.00) |
++--------------+
+|           53 |
++--------------+</pre>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <h3>EXP()</h3>
+                                    <code class="code">
+                                        SELECT EXP(0);
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It is an exponantiation function. So it will dislpay the value of <var>e<sup>0</sup></var>.<br>
+                                        Output :
+                                    </span>
+                                    <div class="output">
+                                        <pre>+--------+
+| EXP(0) |
++--------+
+|      1 |
++--------+</pre>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <h3>LOG()</h3>
+                                    <code class="code">
+                                        SELECT LOG(1);
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It is natural logarithmic function. So it will dislpay the value of <var>log(1)</var>.<br>
+                                        Output :
+                                    </span>
+                                    <div class="output">
+                                        <pre>+--------+
+| LOG(1) |
++--------+
+|      0 |
++--------+</pre>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <h3>LOG10()</h3>
+                                    <code class="code">
+                                        SELECT LOG10(0);
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It is logarithmic function with base 10. So it will dislpay the value of <var>log<sub>10</sub>(10)</var>.<br>
+                                        Output :
+                                    </span>
+                                    <div class="output">
+                                        <pre>+-----------+
+| LOG10(10) |
++-----------+
+|         1 |
++-----------+</pre>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <h3>POW()</h3>
+                                    <code class="code">
+                                        SELECT POWW(2,10);
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It is power function. So it will dislpay the power of <var>2<sup>10</sup></var>.<br>
+                                        Output :
+                                    </span>
+                                    <div class="output">
+                                        <pre>+-----------+
+| POW(2,10) |
++-----------+
+|      1024 |
++-----------+
+</pre>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3>GREATEST()</h3>
+                                    <code class="code">
+                                        SELECT GREATEST(2,10,0,-10,2,5);
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It will display the greatest number among the argument passed to function.<br>
+                                        Output :
+                                    </span>
+                                    <div class="output">
+                                        <pre>+-------------------------+
+| GREATEST(2,10,0,10,2,5) |
++-------------------------+
+|                      10 |
++-------------------------+</pre>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <h3>LEAST()</h3>
+                                    <code class="code">
+                                        SELECT LEAST(2,10,0,-10,2,5);
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It will display the least number among the argument passed to function.<br>
+                                        Output :
+                                    </span>
+                                    <div class="output">
+                                        <pre>+-----------------------+
+| LEAST(2,10,0,-10,2,5) |
++-----------------------+
+|                   -10 |
++-----------------------+</pre>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3>RADIANS()</h3>
+                                    <code class="code">
+                                        SELECT RADIANS(180);
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It will convert degree into radian and display result .<br>
+                                        Output :
+                                    </span>
+                                    <div class="output">
+                                        <pre>+-------------------+
+| RADIANS(180)      |
++-------------------+
+| 3.141592653589793 |
++-------------------+</pre>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <h3>SQRT()</h3>
+                                    <code class="code">
+                                        SELECT SQRT(121);
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It will display the square root of the argument passed to function.<br>
+                                        Output :
+                                    </span>
+                                    <div class="output">
+                                        <pre>+-----------+
+| sqrt(121) |
++-----------+
+|        11 |
++-----------+</pre>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3>RAND()</h3>
+                                    <code class="code">
+                                        SELECT RAND();
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It will generate random number at each time when you run above code and display result .<br>
+                                        Output :
+                                    </span>
+                                </li>
+
+                                <li>
+                                    <h3>CONCAT()</h3>
+                                    <code class="code">
+                                        SELECT CONCAT('wow', ' SQL');
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It is string concatenation function. So it will concatenate two or more string together and display result .<br>
+                                        Output :
+                                    </span>
+                                    <div class="output">
+                                        <pre>+-----------------------+
+| concat('wow', ' SQL') |
++-----------------------+
+| wow SQL               |
++-----------------------+</pre>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3>UPPER()</h3>
+                                    <code class="code">
+                                        SELECT UPPER('The invisible man');
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It will display result in uppercase letters.<br>
+                                        Output :
+                                    </span>
+                                    <div class="output">
+                                        <pre>+----------------------------+
+| UPPER('The invisible man') |
++----------------------------+
+| THE INVISIBLE MAN          |
++----------------------------+
+</pre>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <h3>LOWER()</h3>
+                                    <code class="code">
+                                        SELECT LOWER('The invisible man');
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It will display result in lowercase letters.<br>
+                                        Output :
+                                    </span>
+                                    <div class="output">
+                                        <pre>+----------------------------+
+| lower('The invisible man') |
++----------------------------+
+| the invisible man          |
++----------------------------+
+</pre>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3>TRIM()</h3>
+                                    <code class="code">
+                                        SELECT TRIM('<span class="space" title="empty space"> </span>The invisible man<span class="space" title="empty space"> </span>');
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It removes the white spaces at start and end of the string and display result.
+                                        It does not remove any whitespace between the string's words or letters<br>
+                                        Output with TRIM() function :
+                                    </span>
+                                    <div class="output">
+                                        <pre>+--------------------------------+
+| TRIM('    The invisible man ') |
++--------------------------------+
+| The invisible man              |
++--------------------------------+
+</pre>
+                                    </div>
+                                    Output without TRIM() function :
+                                    <div class="output">
+                                        <pre>+------------------------+
+| The invisible man      |
++------------------------+
+|     The invisible man  |
++------------------------+</pre>
+                                    </div>
+                                </li>
+                                <div class="sub_border">
+                                    <li>
+                                        <h3>SUBSTR()</h3>
+                                        <code class="code">
+                                            SELECT SUBSTR('Koi hai kya',5,3);
+                                        </code>
+                                        <span class="tips">TIPS &rarr;</span>
+                                        <span class="about">
+                                            It has two arguments, the first argument tells about from where do you want to break string and second argument takes the total length of substring and display result .<br>
+                                            Output :
+                                        </span>
+                                        <div class="output">
+                                            <pre>+---------------------------+
+| SUBSTR('Koi hai kya',5,3) |
++---------------------------+
+| hai                       |
++---------------------------+</pre>
+                                        </div>
+
+                                        <ol>
+                                            <h4>LEFT()</h4>
+                                            <code class="code">
+                                                SELECT LEFT('Koi hai kya',7);
+                                            </code>
+                                            <span class="tips">TIPS &rarr;</span>
+                                            <span class="about">
+                                                It has only one argument and it tells about the total length of substring do want to see from the left hand side and display result .<br>
+                                                Output :
+                                            </span>
+                                            <div class="output">
+                                                <pre>+-----------------------+
+| LEFT('Koi hai kya',7) |
++-----------------------+
+| Koi hai               |
++-----------------------+</pre>
+                                            </div>
+
+                                            <li>
+                                                <h4>RIGHT()</h4>
+                                                <code class="code">
+                                                    SELECT RIGHT('Koi hai kya',7);
+                                                </code>
+                                                <span class="tips">TIPS &rarr;</span>
+                                                <span class="about">
+                                                    It has only one argument and it tells about the total length of substring do want to see from the right hand side and display result .<br>
+                                                    Output :
+                                                </span>
+                                                <div class="output">
+                                                    <pre>+------------------------+
+| RIGHT('Koi hai kya',7) |
++------------------------+
+| hai kya                |
++------------------------+</pre>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </li>
+
+
+
+                                </div>
+                                <li>
+                                    <h3>INSERT()</h3>
+                                    <code class="code">
+                                        SELECT INSERT('The invisible man',1,3,'wow');
+                                    </code>
+                                    <span class="tips">TIPS &rarr;</span>
+                                    <span class="about">
+                                        It has two arguments, the first argument tells about from where do you want to insert new word or new string and second argument denotes that the total length of that string which will be replace and display result .<br>
+                                        In this case we want to replace word 'The' of length 3, so the value of second argument is 3.<br><br>
+                                        Output :
+                                    </span>
+                                    <div class="output">
+                                        <pre>+---------------------------------------+
+| INSERT('The invisible man',1,3,'wow') |
++---------------------------------------+
+| wow invisible man                     |
++---------------------------------------+
+</pre>
+                                        If you don't want to replace anything from string 'The invisible man' then
+                                        the query will be -
+                                        <code class="code">SELECT INSERT('The invisible
+                                            man',1,0,'wow ');</code>
+                                        <span class="tips">TIPS &rarr;</span>
+                                        <span class="about">
+                                            Here the second argument has value 0 and it means that we want to replace the string of length 0 at index 1 (value of first argument) from string 'The invisible man', but there is no any letter of length 0 at index 1 in string 'The invisible man' .<br><br>
+                                            Output :
+                                        </span>
+                                        <div class="output">
+                                            <pre>+----------------------------------------+
+| INSERT('The invisible man',1,0,'wow ') |
++----------------------------------------+
+| wow The invisible man                  |
++----------------------------------------+</pre>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </dd>
+                    </div>
+                </dl>
+            </div> <!-- .left_side -->
+
+
+        </div> <!-- .wrap -->
+        <aside class="aside">
+            <nav class="nav">
+                <h2>INDEX</h2>
+                <input type="search" placeholder="Type here to search">
+                <div id="no_item_found">
+                   <p>0 Items found.</p>
+                    
+                </div>
+                <ul id="index_ul">
+
+                    <li><a href="#l1">Create a database</a></li>
+                    <li><a href="#l2">Show all databases</a></li>
+                    <li><a href="#l3">Use a database</a></li>
+                    <li><a href="#l4">Delete a database</a></li>
+                    <li><a href="#l5">Data types</a></li>
+                    <li><a href="#l6">For storing image</a></li>
+
+                    <li class="dropdown">
+                        <a href="#l7" class="dropbtn">Types of constraints &nbsp;<span id="down_angle">&gt;</span></a>
+                        <div class="dropdown-content">
+                            <ol>
+                                <li>Not null</li>
+                                <li>Default</li>
+                                <li>Unique</li>
+                                <li>Primary key</li>
+                                <li>Foreign key</li>
+                                <li>Check constraints</li>
+                            </ol>
+                        </div>
+                    </li> <!-- .dropdown -->
+                    <li><a href="#l8">Create table</a></li>
+                    <li><a href="#l9">Insert values inside of table</a></li>
+                    <li><a href="#l10">Show table details</a></li>
+                    <li><a href="#l11">Create table from other table</a></li>
+                    <li><a href="#l12">Insert table values from other table</a></li>
+                    <li><a href="#l13">Show all table's name</a></li>
+                    <li><a href="#l14">Delete table from database</a></li>
+                    <li><a href="#l15">Arithmetic operations</a></li>
+                    <li><a href="#l16">Logical operators</a></li>
+                    <li><a href="#l17">Update or change value inside of table</a></li>
+                    <li><a href="#l18">Delete a row from table</a></li>
+                    <li><a href="#l19">Top and limit clause</a></li>
+                    <li><a href="#l20">Order by clause</a></li>
+                    <li><a href="#l21">Group by clause</a></li>
+                    <li><a href="#l22">Table result with changing the attribute name with 'AS' clause</a></li>
+                    <li><a href="#l23">Useful functions</a></li>
+                </ul>
+
+            </nav> <!-- .nav -->
+        </aside> <!-- .aside-->
+    </main> <!-- .main -->
+    
+    <footer>
+       <div title="Email ID of Admin : Abhishek Kamal">
+        abhishekkamal1800@gmail.com <br>
+        abhishekmpoz@gmail.com<br>
+        2019
+        </div>
+    </footer>
+
+    <script>
+        /* Script for smooth scrolling when click on any link in this page*/
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        /* Index search */
+        let no_item = document.getElementById('no_item_found');
+        let input = document.querySelector('.aside input');
+        let index_a = document.querySelectorAll('.aside a');
+        //let aside = document.querySelector('.aside');
+        let lenght_a = index_a.length;
+        let check = 0;
+        function search() {
+
+            for (let i = 0; i < lenght_a; i++) {
+                var string = index_a[i].textContent.toLocaleLowerCase();
+                var word_for_search = input.value.toLocaleLowerCase();
+                var parent_a = index_a[i].parentElement;
+                
+                
+                if ((string.includes(word_for_search))) {
+                    
+                    /*if(check !=1){*/
+                    parent_a.style.display="block";
+                    //no_item.style.display="none";
+                    /*}*//*else{
+                        check = 1;
+                        no_item.style.display="block";
+                    }*/
+
+                } else {
+                   // check = 0;
+                    /*if(check == 1){
+                        no_item.style.display="block";
+                        check = 0;
+                    }*/
+                    parent_a.style.display = "none";
+                    //no_item.style.display="block";
+                    //console.log('false');
+                }
+            }
+            /*if(check == 1){
+                no_item.style.display = "none";
+            }else{
+                no_item.style.display = "block";
+            }*/
+            //console.log(input.lenght);
+
+        }
+
+        input.addEventListener('keyup', function(e) {
+            //console.log(input.value.length);
+            var get_length = input.value.length;
+            if (get_length >= 3) {
+                search();
+            } else {
+                let parent_aa;
+                for (let j = 0; j < lenght_a; j++) {
+                    parent_aa = index_a[j].parentElement;
+                    parent_aa.style.display = "block";
+                }
+            }
+        }, false);
+    </script>
+</body></html>
